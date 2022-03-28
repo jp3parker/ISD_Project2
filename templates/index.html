@@ -6,17 +6,12 @@
     <link rel="stylesheet" href="static/bootstrap.css">
 </head>
 <body>
-    <nav></nav>
 
     <h1 class="m-5 p-5">ABC Company</h1>
-    <div class="m-5 p-5">
-        Name:
-        <input type="text" name="name" value={{ user.name }}><br><br>
 
-        Email:
-        <input type="email" name="email" value={{ user.email }}><br>
+    <h2 class="m-5 p-5"> Job Info </h2>
 
-    </div>
+    <button style="margin: 96px;" onclick="location.href='{{ url_for("upload") }}'">Apply</button>
 
 </body>
 </html>

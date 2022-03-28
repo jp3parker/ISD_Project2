@@ -5,6 +5,7 @@ import PyPDF2
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
+
 user = {}
 
 
@@ -38,6 +39,17 @@ def index():  # put application's code here
     # closing the pdf file object
     pdfFileObj.close()
     return render_template("index.html", user=user)
+
+
+@app.route('/upload.html')
+def upload():
+    return render_template("upload.html")
+
+
+@app.route('/display.html')
+def display():
+    # process resume pdf
+    return render_template("display.html")
 
 
 if __name__ == '__main__':

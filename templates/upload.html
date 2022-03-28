@@ -7,9 +7,11 @@
 </head>
 <body>
 
-    <form style="margin: 96px;" action="{{ url_for("display") }}">
+
+
+    <form style="margin: 96px;" action="{{ url_for("display") }}" method="post" enctype = "multipart/form-data">
         <input type="file" id="myFile" name="filename">
-        <input type="submit">
+        <input type="submit" value="Upload">
     </form>
 
 

@@ -1,8 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
 from flask_bootstrap5 import Bootstrap
 import PyPDF2
 
+
+# UPLOAD_FOLDER = '/static/resume_uploads'
+# ALLOWED_EXTENSIONS = {'pdf'}
+
 app = Flask(__name__)
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 bootstrap = Bootstrap(app)
 
 
@@ -46,9 +52,13 @@ def upload():
     return render_template("upload.html")
 
 
-@app.route('/display.html')
+@app.route('/display.html', methods=['POST'])
 def display():
-    # process resume pdf
+    if request.method == 'POST' and 'filename' in request.files:
+        file = request.files['filename']
+        # process more info about file
+        print("file sent successfully")
+
     return render_template("display.html")
 
 

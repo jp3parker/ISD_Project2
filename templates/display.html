@@ -11,44 +11,44 @@
 
     <form style="margin: 0px 96px 96px;" action="{{ url_for("submit") }}" method="post" enctype = "multipart/form-data">
         <label for="name">Name:</label>
-        <input type="text" id="name" value="{{ name }}"><br><br>
+        <input type="text" id="name" name="name" value="{{ name }}"><br><br>
 
         <label for="address">Address:</label>
-        <input size="50" type="text" id="address" value="{{ address }}"><br><br>
+        <input size="50" type="text" id="address" name="address" value="{{ address }}"><br><br>
 
         <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" value="{{ phone_number }}"><br><br>
+        <input type="text" id="phone_number" name="phone_number" value="{{ phone_number }}"><br><br>
 
         <label for="email">Email:</label>
-        <input type="text" id="email" value="{{ email }}"><br><br>
+        <input type="text" id="email" name="email" value="{{ email }}"><br><br>
 
         <label for="qualifications">Qualifications:</label><br>
-        <textarea cols="100" rows="5" id="qualifications">
+        <textarea cols="100" rows="5" id="qualifications" name="qualifications">
             {{ qualifications }}
         </textarea><br><br>
 
         <label for="education">Education:</label><br>
-        <textarea cols="100" rows="5" id="education">
+        <textarea cols="100" rows="5" id="education" name="education">
             {{ education }}
         </textarea><br><br>
 
         <label for="accomplishments">Accomplishments:</label><br>
-        <textarea cols="100" rows="10" id="accomplishments">
+        <textarea cols="100" rows="10" id="accomplishments" name="accomplishments">
             {{ accomplishments }}
         </textarea><br><br>
 
         <label for="work_history">Work History:</label><br>
-        <textarea cols="100" rows="10" id="work_history">
+        <textarea cols="100" rows="10" id="work_history" name="work_history">
             {{ work_history }}
         </textarea><br><br>
 
         <label for="affiliations">Affiliations:</label><br>
-        <textarea cols="100" rows="10" id="affiliations">
+        <textarea cols="100" rows="10" id="affiliations" name="affiliations">
             {{ professional_affiliation }}
         </textarea><br><br>
 
          <label for="computer_skills">Computer Skills:</label><br>
-        <textarea cols="100" rows="10" id="computer_skills">
+        <textarea cols="100" rows="10" id="computer_skills" name="computer_skills">
             {{ computer_skills }}
         </textarea><br><br>
 

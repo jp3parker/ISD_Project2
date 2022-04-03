@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Resume Info</title>
+    <link rel="stylesheet" href="static/bootstrap.css">
+</head>
+<body>
+
+    <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+                Crucible Systems
+            </h1>
+        </div>
+    </header>
+
+    <h1 style="margin-top:96px;margin-left: 96px;margin-bottom: 0px;">Your Resume:</h1><br>
+
+    <form style="margin: 0px 96px 96px;" action="{{ url_for("submit") }}" method="post" enctype = "multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ name }}"><br><br>
+
+        <label for="address">Address:</label>
+        <input size="50" type="text" id="address" name="address" value="{{ address }}"><br><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" value="{{ phone_number }}"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{ email }}"><br><br>
+
+        <label for="qualifications">Qualifications:</label><br>
+        <textarea cols="100" rows="5" id="qualifications" name="qualifications">
+            {{ qualifications }}
+        </textarea><br><br>
+
+        <label for="education">Education:</label><br>
+        <textarea cols="100" rows="5" id="education" name="education">
+            {{ education }}
+        </textarea><br><br>
+
+        <label for="accomplishments">Accomplishments:</label><br>
+        <textarea cols="100" rows="10" id="accomplishments" name="accomplishments">
+            {{ accomplishments }}
+        </textarea><br><br>
+
+        <label for="work_history">Work History:</label><br>
+        <textarea cols="100" rows="10" id="work_history" name="work_history">
+            {{ work_history }}
+        </textarea><br><br>
+
+        <label for="affiliations">Affiliations:</label><br>
+        <textarea cols="100" rows="10" id="affiliations" name="affiliations">
+            {{ professional_affiliation }}
+        </textarea><br><br>
+
+         <label for="computer_skills">Computer Skills:</label><br>
+        <textarea cols="100" rows="10" id="computer_skills" name="computer_skills">
+            {{ computer_skills }}
+        </textarea><br><br>
+
+        <input type="submit" value="Upload">
+    </form>
+
+</body>
+</html>

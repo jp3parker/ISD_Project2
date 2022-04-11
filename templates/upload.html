@@ -21,7 +21,7 @@
 
     <p style="margin: 96px;">Upload your resume.</p>
 
-    <form style="margin: 96px;" action="{{ url_for("display") }}" method="post" enctype = "multipart/form-data">
+    <form style="margin: 96px;" action= "{{ url_for("display") }}" method="POST" enctype = "multipart/form-data">
         <input type="file" id="myFile" name="filename" accept="application/pdf">
         <input type="submit" value="Upload">
     </form>

@@ -1,11 +1,17 @@
-from flask import Flask, render_template, request
+
+from crypt import methods
+from fileinput import filename
+import os
+from flask import Flask, render_template, request, redirect, flash, url_for
+from werkzeug.utils import secure_filename
 from flask_bootstrap5 import Bootstrap
 import PyPDF2
 
-UPLOAD_FOLDER = '/static/resume_uploads'
+
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config["UPLOAD_FOLDER"] = "/Users/dn/Documents/GitHub/ISD_Project2/static/resume_uploads"
+app.config['UPLOAD_EXTENSIONS'] = ['.pdf']
 bootstrap = Bootstrap(app)
 
 user = {}
@@ -16,20 +22,35 @@ def index():  # put application's code here
     return render_template("index.html")
 
 
-@app.route('/upload.html')
+@app.route('/upload.html', methods = ['GET', 'POST'])
 def upload():
-    return render_template("upload.html")
+        print("inuploads")
+        
+        if request.method == "GET":
+           print("posted!")
+           if request.files:
+               print("file requested")
+               file = request.files["filename"]
+               
+               file.save(os.path.join(app.config["UPLOAD_FOLDER"], file.filename))
+               print(file)
+               return redirect(request.url)
+        
+        return render_template('upload.html')
+
 
 
 @app.route('/display.html', methods=['POST'])
 def display():
     if request.method == 'POST' and 'filename' in request.files \
             and request.files['filename'].content_type == 'application/pdf':
-
         file = request.files['filename']
+        
+        
+        
         pdfReader = PyPDF2.PdfFileReader(file)
 
-        # Getting number of pages in pdf file
+        # Getting number of pages in pdf fileF
         pages = pdfReader.numPages
         # Loop for reading all the Pages
         for i in range(pages):
@@ -77,7 +98,17 @@ def display():
         print("something is wrong")
         return '<p style="color: red;margin: 96px;">Something went wrong. ' \
                'Make sure you are submitting a pdf file!</p>'
-
+def upload():
+        if request.method == 'POST':
+            uploaded_file = request.files['filename']
+            file = secure_filename(uploaded_file.filename)  
+            if file != '':
+                file_ext = os.path.splitext(filename)[1]
+                if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+                        flash('wrong')
+                        uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  
+    
+        return render_template('upload.html')
 
 @app.route('/submit.html', methods=['POST'])
 def submit():
